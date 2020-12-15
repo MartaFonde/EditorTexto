@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+	<appSettings>
+		<add key="ajusteLinea" value="true"/>
+		<add key="tipoLetra" value="normal"/>
+		<add key="colorFondo" value="Color.White"/>
+		<add key="colorTexto" value="Color.Black" />
+		<add key="fuente" value="Microsoft Sans Serif; 8,25pt" />
+		<add key="ultDir" value=""/>
+		<add key="recientes" value=""/>
+	</appSettings>
+</configuration>
