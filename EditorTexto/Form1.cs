@@ -58,16 +58,7 @@ namespace EditorTexto
         // ======================= ARCHIVO ================================
         private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            res = DialogResult.No;
-            if (!guardado)
-            {
-                res = MessageBox.Show("¿Quieres guardar este archivo antes de abrir uno nuevo?", "Confirmacion", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                if (res == DialogResult.Yes)
-                {
-                    guardar();
-                    texto.Text = "";
-                }
-            }
+            guardadoConfirm();
             if(res != DialogResult.Cancel)
             {
                 texto.Text = "";
@@ -102,22 +93,13 @@ namespace EditorTexto
 
         private void abrirArchivoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            res = DialogResult.No;
-            if (!guardado)
-            {
-                res = MessageBox.Show("¿Quieres guardar los cambios antes de abrir un nuevo archivo?", "Abrir", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
-                if(res == DialogResult.Yes)
-                {
-                    guardar();
-                }
-            }
+            guardadoConfirm();
             if(res != DialogResult.Cancel)
             {
                 op = new OpenFileDialog();
                 op.Title = "Abrir";
                 this.op.Filter = "Texto|*.txt|Config|*.ini|Java|*.java|C#|*.cs|Python|*.py|HTML|*.html|CSS|*.css|XML|*.xml|Todos los archivos|*.*";
-                res = op.ShowDialog();
-                if (res == DialogResult.OK)
+                if (op.ShowDialog() == DialogResult.OK)
                 {
                     f = new FileInfo(op.FileName);
                     if (Enum.GetNames(typeof(extensiones)).ToList<string>().Contains(f.Extension.Substring(1)))
@@ -137,7 +119,7 @@ namespace EditorTexto
 
         private void leer(string ruta)
         {
-            texto.Text = "";
+            texto.Text= "";
             string linea;
             using (StreamReader sr = new StreamReader(ruta))
             {
@@ -175,11 +157,16 @@ namespace EditorTexto
 
         private void archivosRecientesClick(object sender, EventArgs e)
         {
-            ToolStripMenuItem item = (ToolStripMenuItem)sender;
-            leer(item.Tag.ToString());
-            colocarRecientes(item.Tag.ToString());
-            f = new FileInfo(item.Tag.ToString());
-            this.Text = f.Name;
+            guardadoConfirm();
+            if(res != DialogResult.Cancel)
+            {
+                ToolStripMenuItem item = (ToolStripMenuItem)sender;
+                leer(item.Tag.ToString());
+                colocarRecientes(item.Tag.ToString());
+                f = new FileInfo(item.Tag.ToString());
+                this.Text = f.Name;
+                guardado = true;
+            }            
         }
 
         private void colocarRecientes(string fileName)
@@ -200,6 +187,19 @@ namespace EditorTexto
         {
             configEscribir();
             Environment.Exit(0);
+        }
+
+        private void guardadoConfirm()
+        {
+            res = DialogResult.No;
+            if (!guardado)
+            {
+                res = MessageBox.Show("¿Quieres guardar los cambios antes de abrir un nuevo archivo?", "Abrir", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+                if (res == DialogResult.Yes)
+                {
+                    guardar();
+                }
+            }
         }
 
 // ===========================================================
