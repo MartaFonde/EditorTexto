@@ -268,8 +268,7 @@ namespace EditorTexto
         private void colorDeTextoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ColorDialog clr = new ColorDialog();
-            res = clr.ShowDialog();
-            if(res == DialogResult.OK)
+            if(clr.ShowDialog() == DialogResult.OK)
             {
                 texto.ForeColor = clr.Color;
             }
@@ -278,8 +277,7 @@ namespace EditorTexto
         private void colorDeFondoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ColorDialog clr = new ColorDialog();
-            res = clr.ShowDialog();
-            if (res == DialogResult.OK)
+            if (clr.ShowDialog() == DialogResult.OK)
             {
                 texto.BackColor = clr.Color;
             }
@@ -288,8 +286,7 @@ namespace EditorTexto
         private void fuenteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FontDialog fnt = new FontDialog();
-            res = fnt.ShowDialog();
-            if(res == DialogResult.OK)
+            if(fnt.ShowDialog() == DialogResult.OK)
             {
                 texto.Font = fnt.Font;
             }
