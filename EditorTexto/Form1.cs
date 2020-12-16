@@ -41,7 +41,7 @@ namespace EditorTexto
         {
             if (!guardado)
             {
-                res = MessageBox.Show("¿Quieres guardar los cambios antes de salir?", "Salir", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+                res = MessageBox.Show("¿Quieres guardar el archivo antes de salir?", "Salir", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
                 switch (res)                    
                 {
                     case DialogResult.Yes:
@@ -58,15 +58,21 @@ namespace EditorTexto
         // ======================= ARCHIVO ================================
         private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            res = DialogResult.No;
             if (!guardado)
             {
-                if(MessageBox.Show("¿Quieres guardar este archivo antes de abrir uno nuevo?", "Confirmacion", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)
-                    == DialogResult.Yes){
+                res = MessageBox.Show("¿Quieres guardar este archivo antes de abrir uno nuevo?", "Confirmacion", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                if (res == DialogResult.Yes)
+                {
                     guardar();
+                    texto.Text = "";
                 }
             }
-            texto.Text = "";
-            this.Text = titulo;
+            if(res != DialogResult.Cancel)
+            {
+                texto.Text = "";
+                this.Text = titulo;
+            }
         }
 
         private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -232,7 +238,6 @@ namespace EditorTexto
         {
             texto.WordWrap = itemAjusteLinea.Checked;
             texto.ScrollBars = texto.WordWrap ? ScrollBars.Vertical : ScrollBars.Both;
-            texto.Select(0, 0);
         }
 
         private void seleccionEscritura(object sender, EventArgs e)     //execútase cada vez que Check se cambie
