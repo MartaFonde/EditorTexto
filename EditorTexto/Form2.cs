@@ -21,13 +21,28 @@ namespace EditorTexto
 
         private void btnAplicar_Click(object sender, EventArgs e)
         {
-            lblInicio.Text = txtInicio.Text;
-            lblLong.Text = txtLong.Text;
-            f1.texto.Select(Convert.ToInt32(txtInicio.Text), Convert.ToInt32(txtLong.Text));
+            int i, l;
+            if (int.TryParse(txtInicio.Text, out i) && int.TryParse(txtLong.Text, out l))
+                if(i >= 0  && l >= 0 && l < f1.texto.Text.Length - i)
+                {
+                    lblInicio.Text = txtInicio.Text;
+                    lblLong.Text = txtLong.Text;
+                    f1.texto.Select(i, l);
+                }
+                else
+                {
+                    MessageBox.Show("Valores no válidos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            else
+            {
+                MessageBox.Show("Introduce números", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }                
+                        
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
+            //f1.win2 = false;
             this.Close();
         }
     }

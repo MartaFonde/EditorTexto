@@ -61,12 +61,15 @@ namespace EditorTexto
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -105,48 +108,49 @@ namespace EditorTexto
             // 
             this.itemArchivo.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.itemNuevo,
-            this.itemGuardar,
             this.itemAbrir,
+            this.itemGuardar,
             this.itemRecientes,
+            this.toolStripMenuItem3,
             this.itemSalir});
             this.itemArchivo.Name = "itemArchivo";
             this.itemArchivo.Size = new System.Drawing.Size(60, 20);
-            this.itemArchivo.Text = "Archivo";
+            this.itemArchivo.Text = "&Archivo";
             // 
             // itemNuevo
             // 
             this.itemNuevo.Name = "itemNuevo";
-            this.itemNuevo.Size = new System.Drawing.Size(124, 22);
-            this.itemNuevo.Text = "Nuevo ";
+            this.itemNuevo.Size = new System.Drawing.Size(180, 22);
+            this.itemNuevo.Text = "&Nuevo ";
             this.itemNuevo.Click += new System.EventHandler(this.nuevoToolStripMenuItem_Click);
             // 
             // itemGuardar
             // 
             this.itemGuardar.Name = "itemGuardar";
-            this.itemGuardar.Size = new System.Drawing.Size(124, 22);
-            this.itemGuardar.Text = "Guardar ";
+            this.itemGuardar.Size = new System.Drawing.Size(180, 22);
+            this.itemGuardar.Text = "&Guardar ";
             this.itemGuardar.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
             // 
             // itemAbrir
             // 
             this.itemAbrir.Name = "itemAbrir";
-            this.itemAbrir.Size = new System.Drawing.Size(124, 22);
-            this.itemAbrir.Text = "Abrir...";
+            this.itemAbrir.Size = new System.Drawing.Size(180, 22);
+            this.itemAbrir.Text = "&Abrir";
             this.itemAbrir.Click += new System.EventHandler(this.abrirArchivoToolStripMenuItem_Click);
             // 
             // itemRecientes
             // 
             this.itemRecientes.Name = "itemRecientes";
-            this.itemRecientes.Size = new System.Drawing.Size(124, 22);
-            this.itemRecientes.Text = "Recientes";
+            this.itemRecientes.Size = new System.Drawing.Size(180, 22);
+            this.itemRecientes.Text = "&Recientes";
             this.itemRecientes.DropDownClosed += new System.EventHandler(this.archivosRecientesClosed);
             this.itemRecientes.DropDownOpening += new System.EventHandler(this.archivosRecientesOpening);
             // 
             // itemSalir
             // 
             this.itemSalir.Name = "itemSalir";
-            this.itemSalir.Size = new System.Drawing.Size(124, 22);
-            this.itemSalir.Text = "Salir";
+            this.itemSalir.Size = new System.Drawing.Size(180, 22);
+            this.itemSalir.Text = "&Salir";
             this.itemSalir.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
             // itemEdicion
@@ -162,14 +166,14 @@ namespace EditorTexto
             this.itemInfo});
             this.itemEdicion.Name = "itemEdicion";
             this.itemEdicion.Size = new System.Drawing.Size(58, 20);
-            this.itemEdicion.Text = "Edición";
+            this.itemEdicion.Text = "&Edición";
             // 
             // itemDeshacer
             // 
             this.itemDeshacer.Name = "itemDeshacer";
             this.itemDeshacer.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
             this.itemDeshacer.Size = new System.Drawing.Size(244, 22);
-            this.itemDeshacer.Text = "Deshacer";
+            this.itemDeshacer.Text = "&Deshacer";
             this.itemDeshacer.Click += new System.EventHandler(this.deshacerToolStripMenuItem_Click);
             // 
             // itemCopiar
@@ -177,7 +181,7 @@ namespace EditorTexto
             this.itemCopiar.Name = "itemCopiar";
             this.itemCopiar.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
             this.itemCopiar.Size = new System.Drawing.Size(244, 22);
-            this.itemCopiar.Text = "Copiar";
+            this.itemCopiar.Text = "&Copiar";
             this.itemCopiar.Click += new System.EventHandler(this.copiarToolStripMenuItem_Click);
             // 
             // itemCortar
@@ -185,7 +189,7 @@ namespace EditorTexto
             this.itemCortar.Name = "itemCortar";
             this.itemCortar.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
             this.itemCortar.Size = new System.Drawing.Size(244, 22);
-            this.itemCortar.Text = "Cortar";
+            this.itemCortar.Text = "Co&rtar";
             this.itemCortar.Click += new System.EventHandler(this.cortarToolStripMenuItem_Click);
             // 
             // itemPegar
@@ -193,7 +197,7 @@ namespace EditorTexto
             this.itemPegar.Name = "itemPegar";
             this.itemPegar.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
             this.itemPegar.Size = new System.Drawing.Size(244, 22);
-            this.itemPegar.Text = "Pegar";
+            this.itemPegar.Text = "&Pegar";
             this.itemPegar.Click += new System.EventHandler(this.pegarToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
@@ -206,7 +210,7 @@ namespace EditorTexto
             this.itemSelecAll.Name = "itemSelecAll";
             this.itemSelecAll.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
             this.itemSelecAll.Size = new System.Drawing.Size(244, 22);
-            this.itemSelecAll.Text = "Seleccionar todo";
+            this.itemSelecAll.Text = "Seleccionar &todo";
             this.itemSelecAll.Click += new System.EventHandler(this.seleccionarTodoToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
@@ -219,7 +223,7 @@ namespace EditorTexto
             this.itemInfo.Name = "itemInfo";
             this.itemInfo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
             this.itemInfo.Size = new System.Drawing.Size(244, 22);
-            this.itemInfo.Text = "Información de selección";
+            this.itemInfo.Text = "&Información de selección";
             this.itemInfo.Click += new System.EventHandler(this.itemInfo_Click);
             // 
             // itemHerramientas
@@ -232,7 +236,7 @@ namespace EditorTexto
             this.itemFuente});
             this.itemHerramientas.Name = "itemHerramientas";
             this.itemHerramientas.Size = new System.Drawing.Size(90, 20);
-            this.itemHerramientas.Text = "Herramientas";
+            this.itemHerramientas.Text = "&Herramientas";
             // 
             // itemAjusteLinea
             // 
@@ -241,8 +245,8 @@ namespace EditorTexto
             this.itemAjusteLinea.CheckState = System.Windows.Forms.CheckState.Checked;
             this.itemAjusteLinea.Name = "itemAjusteLinea";
             this.itemAjusteLinea.Size = new System.Drawing.Size(188, 22);
-            this.itemAjusteLinea.Text = "Ajuste de línea";
-            this.itemAjusteLinea.Click += new System.EventHandler(this.ajusteDeLíneaToolStripMenuItem_Click);
+            this.itemAjusteLinea.Text = "&Ajuste de línea";
+            this.itemAjusteLinea.CheckStateChanged += new System.EventHandler(this.ajusteLineaToolStripMenuItem_Check);
             // 
             // itemSelecEscritura
             // 
@@ -252,13 +256,13 @@ namespace EditorTexto
             this.itemNormal});
             this.itemSelecEscritura.Name = "itemSelecEscritura";
             this.itemSelecEscritura.Size = new System.Drawing.Size(188, 22);
-            this.itemSelecEscritura.Text = "Selección de escritura";
+            this.itemSelecEscritura.Text = "&Selección de escritura";
             // 
             // itemMayus
             // 
             this.itemMayus.CheckOnClick = true;
             this.itemMayus.Name = "itemMayus";
-            this.itemMayus.Size = new System.Drawing.Size(180, 22);
+            this.itemMayus.Size = new System.Drawing.Size(136, 22);
             this.itemMayus.Tag = "mayus";
             this.itemMayus.Text = "Mayúsculas";
             this.itemMayus.CheckStateChanged += new System.EventHandler(this.seleccionEscritura);
@@ -267,7 +271,7 @@ namespace EditorTexto
             // 
             this.itemMinus.CheckOnClick = true;
             this.itemMinus.Name = "itemMinus";
-            this.itemMinus.Size = new System.Drawing.Size(180, 22);
+            this.itemMinus.Size = new System.Drawing.Size(136, 22);
             this.itemMinus.Tag = "minus";
             this.itemMinus.Text = "Minúsculas";
             this.itemMinus.CheckStateChanged += new System.EventHandler(this.seleccionEscritura);
@@ -278,7 +282,7 @@ namespace EditorTexto
             this.itemNormal.CheckOnClick = true;
             this.itemNormal.CheckState = System.Windows.Forms.CheckState.Checked;
             this.itemNormal.Name = "itemNormal";
-            this.itemNormal.Size = new System.Drawing.Size(180, 22);
+            this.itemNormal.Size = new System.Drawing.Size(136, 22);
             this.itemNormal.Tag = "normal";
             this.itemNormal.Text = "Normal";
             this.itemNormal.CheckStateChanged += new System.EventHandler(this.seleccionEscritura);
@@ -287,38 +291,39 @@ namespace EditorTexto
             // 
             this.itemColorTxt.Name = "itemColorTxt";
             this.itemColorTxt.Size = new System.Drawing.Size(188, 22);
-            this.itemColorTxt.Text = "Color de texto";
+            this.itemColorTxt.Text = "Color de &texto";
             this.itemColorTxt.Click += new System.EventHandler(this.colorDeTextoToolStripMenuItem_Click);
             // 
             // itemColorFondo
             // 
             this.itemColorFondo.Name = "itemColorFondo";
             this.itemColorFondo.Size = new System.Drawing.Size(188, 22);
-            this.itemColorFondo.Text = "Color de fondo";
+            this.itemColorFondo.Text = "&Color de fondo";
             this.itemColorFondo.Click += new System.EventHandler(this.colorDeFondoToolStripMenuItem_Click);
             // 
             // itemFuente
             // 
             this.itemFuente.Name = "itemFuente";
             this.itemFuente.Size = new System.Drawing.Size(188, 22);
-            this.itemFuente.Text = "Fuente";
+            this.itemFuente.Text = "&Fuente";
             this.itemFuente.Click += new System.EventHandler(this.fuenteToolStripMenuItem_Click);
             // 
             // itemInfoApp
             // 
             this.itemInfoApp.Name = "itemInfoApp";
             this.itemInfoApp.Size = new System.Drawing.Size(80, 20);
-            this.itemInfoApp.Text = "Acerca de...";
+            this.itemInfoApp.Text = "A&cerca de...";
             // 
             // toolTip1
             // 
             this.toolTip1.ShowAlways = true;
-            this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
             // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton4,
+            this.toolStripButton8,
+            this.toolStripButton9,
             this.toolStripButton5,
             this.toolStripButton1,
             this.toolStripButton2,
@@ -341,6 +346,26 @@ namespace EditorTexto
             this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton4.Text = "Nuevo";
             this.toolStripButton4.Click += new System.EventHandler(this.nuevoToolStripMenuItem_Click);
+            // 
+            // toolStripButton8
+            // 
+            this.toolStripButton8.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton8.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton8.Image")));
+            this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton8.Name = "toolStripButton8";
+            this.toolStripButton8.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton8.Text = "Abrir";
+            this.toolStripButton8.Click += new System.EventHandler(this.abrirArchivoToolStripMenuItem_Click);
+            // 
+            // toolStripButton9
+            // 
+            this.toolStripButton9.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton9.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton9.Image")));
+            this.toolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton9.Name = "toolStripButton9";
+            this.toolStripButton9.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton9.Text = "Guardar";
+            this.toolStripButton9.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
             // 
             // toolStripButton5
             // 
@@ -402,6 +427,11 @@ namespace EditorTexto
             this.toolStripButton7.Text = "Información";
             this.toolStripButton7.Click += new System.EventHandler(this.itemInfo_Click);
             // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -417,7 +447,6 @@ namespace EditorTexto
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editor de texto";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
@@ -464,6 +493,9 @@ namespace EditorTexto
         private System.Windows.Forms.ToolStripButton toolStripButton6;
         private System.Windows.Forms.ToolStripButton toolStripButton7;
         internal System.Windows.Forms.TextBox texto;
+        private System.Windows.Forms.ToolStripButton toolStripButton8;
+        private System.Windows.Forms.ToolStripButton toolStripButton9;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
     }
 }
 
