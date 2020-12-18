@@ -42,8 +42,12 @@ namespace EditorTexto
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            //f1.win2 = false;
             this.Close();
+        }
+
+        private void Form2_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            f1.win2 = false;
         }
     }
 }

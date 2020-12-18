@@ -300,11 +300,14 @@ namespace EditorTexto
 //-------------------- SELECCION ---------------------
         private void itemInfo_Click(object sender, EventArgs e)
         {
-            f2 = new Form2(this);
-            f2.Show();
-            win2 = true;
-            f2.lblInicio.Text = texto.SelectionStart.ToString();
-            f2.lblLong.Text = texto.SelectionLength.ToString();
+            if(!win2)
+            {
+                f2 = new Form2(this);
+                f2.Show();
+                win2 = true;
+                f2.lblInicio.Text = texto.SelectionStart.ToString();
+                f2.lblLong.Text = texto.SelectionLength.ToString();
+            }            
         }
 
         private void texto_MouseMove(object sender, MouseEventArgs e)
@@ -318,7 +321,7 @@ namespace EditorTexto
                 }
             }            
         }
-        private void texto_KeyDown(object sender, KeyEventArgs e)
+        private void texto_KeyUp(object sender, KeyEventArgs e)
         {
             if (win2)
             {
@@ -330,67 +333,82 @@ namespace EditorTexto
                         f2.lblLong.Text = texto.SelectionLength.ToString();
                     }
                 }
-            }            
+            }
         }
 
-// ---------------------- ARCHIVO CONFIG ----------------------
+        // ---------------------- ARCHIVO CONFIG ----------------------
         private void configEscribir()
         {
-            using (BinaryWriter bw = new BinaryWriter(File.Create(rutaConfig)))
+            try
             {
-                bw.Write(itemAjusteLinea.Checked);
-
-                bw.Write(itemMayus.Checked);
-                bw.Write(itemMinus.Checked);
-                bw.Write(itemNormal.Checked);
-
-                bw.Write(texto.ForeColor.R);
-                bw.Write(texto.ForeColor.G);
-                bw.Write(texto.ForeColor.B);
-
-                bw.Write(texto.BackColor.R);
-                bw.Write(texto.BackColor.G);
-                bw.Write(texto.BackColor.B);
-
-                bw.Write(cvt.ConvertToString(this.texto.Font));
-
-                bw.Write(Environment.CurrentDirectory);
-
-                foreach (string s in recientes)
+                using (BinaryWriter bw = new BinaryWriter(File.Create(rutaConfig)))
                 {
-                    bw.Write(s);
+                    bw.Write(itemAjusteLinea.Checked);
+
+                    bw.Write(itemMayus.Checked);
+                    bw.Write(itemMinus.Checked);
+                    bw.Write(itemNormal.Checked);
+
+                    bw.Write(texto.ForeColor.R);
+                    bw.Write(texto.ForeColor.G);
+                    bw.Write(texto.ForeColor.B);
+
+                    bw.Write(texto.BackColor.R);
+                    bw.Write(texto.BackColor.G);
+                    bw.Write(texto.BackColor.B);
+
+                    bw.Write(cvt.ConvertToString(this.texto.Font));
+
+                    bw.Write(Environment.CurrentDirectory);
+
+                    foreach (string s in recientes)
+                    {
+                        bw.Write(s);
+                    }
                 }
             }
+            catch (ArgumentException)
+            {
+                MessageBox.Show("Error al escribir archivo de configuración", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void configLeer()
         {
             string ruta;
             if (File.Exists(rutaConfig)){
-                using (BinaryReader br = new BinaryReader(File.OpenRead(rutaConfig)))
+                try
                 {
-                    itemAjusteLinea.Checked = br.ReadBoolean();
-                    ajusteLinea();
-                    itemMayus.Checked = br.ReadBoolean();
-                    itemMinus.Checked = br.ReadBoolean();
-                    itemNormal.Checked = br.ReadBoolean();
-
-                    texto.ForeColor = Color.FromArgb(br.ReadByte(), br.ReadByte(), br.ReadByte());
-                    texto.BackColor = Color.FromArgb(br.ReadByte(), br.ReadByte(), br.ReadByte());
-
-                    texto.Font = cvt.ConvertFromString(br.ReadString()) as Font;
-
-                    Environment.CurrentDirectory = br.ReadString();
-
-                    while (br.BaseStream.Position != br.BaseStream.Length)
+                    using (BinaryReader br = new BinaryReader(File.OpenRead(rutaConfig)))
                     {
-                        ruta = br.ReadString();
-                        if (File.Exists(ruta))
+                        itemAjusteLinea.Checked = br.ReadBoolean();
+                        ajusteLinea();
+                        itemMayus.Checked = br.ReadBoolean();
+                        itemMinus.Checked = br.ReadBoolean();
+                        itemNormal.Checked = br.ReadBoolean();
+
+                        texto.ForeColor = Color.FromArgb(br.ReadByte(), br.ReadByte(), br.ReadByte());
+                        texto.BackColor = Color.FromArgb(br.ReadByte(), br.ReadByte(), br.ReadByte());
+
+                        texto.Font = cvt.ConvertFromString(br.ReadString()) as Font;
+
+                        Environment.CurrentDirectory = br.ReadString();
+
+                        while (br.BaseStream.Position != br.BaseStream.Length)
                         {
-                            recientes.Add(ruta);
+                            ruta = br.ReadString();
+                            if (File.Exists(ruta))
+                            {
+                                recientes.Add(ruta);
+                            }
                         }
                     }
                 }
+                catch(Exception ex) when (ex is ArgumentException || ex is UnauthorizedAccessException)
+                {
+                    MessageBox.Show("Error al leer archivo de configuración", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }                
             }
         }
 

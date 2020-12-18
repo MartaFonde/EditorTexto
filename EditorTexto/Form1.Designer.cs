@@ -35,9 +35,10 @@ namespace EditorTexto
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.itemArchivo = new System.Windows.Forms.ToolStripMenuItem();
             this.itemNuevo = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemGuardar = new System.Windows.Forms.ToolStripMenuItem();
             this.itemAbrir = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemGuardar = new System.Windows.Forms.ToolStripMenuItem();
             this.itemRecientes = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.itemSalir = new System.Windows.Forms.ToolStripMenuItem();
             this.itemEdicion = new System.Windows.Forms.ToolStripMenuItem();
             this.itemDeshacer = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,7 +70,6 @@ namespace EditorTexto
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -87,7 +87,7 @@ namespace EditorTexto
             this.texto.Size = new System.Drawing.Size(784, 509);
             this.texto.TabIndex = 0;
             this.texto.TextChanged += new System.EventHandler(this.actualizarText);
-            this.texto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.texto_KeyDown);
+            this.texto.KeyUp += new System.Windows.Forms.KeyEventHandler(this.texto_KeyUp);
             this.texto.MouseMove += new System.Windows.Forms.MouseEventHandler(this.texto_MouseMove);
             // 
             // menuStrip1
@@ -120,36 +120,41 @@ namespace EditorTexto
             // itemNuevo
             // 
             this.itemNuevo.Name = "itemNuevo";
-            this.itemNuevo.Size = new System.Drawing.Size(180, 22);
+            this.itemNuevo.Size = new System.Drawing.Size(124, 22);
             this.itemNuevo.Text = "&Nuevo ";
             this.itemNuevo.Click += new System.EventHandler(this.nuevoToolStripMenuItem_Click);
-            // 
-            // itemGuardar
-            // 
-            this.itemGuardar.Name = "itemGuardar";
-            this.itemGuardar.Size = new System.Drawing.Size(180, 22);
-            this.itemGuardar.Text = "&Guardar ";
-            this.itemGuardar.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
             // 
             // itemAbrir
             // 
             this.itemAbrir.Name = "itemAbrir";
-            this.itemAbrir.Size = new System.Drawing.Size(180, 22);
+            this.itemAbrir.Size = new System.Drawing.Size(124, 22);
             this.itemAbrir.Text = "&Abrir";
             this.itemAbrir.Click += new System.EventHandler(this.abrirArchivoToolStripMenuItem_Click);
+            // 
+            // itemGuardar
+            // 
+            this.itemGuardar.Name = "itemGuardar";
+            this.itemGuardar.Size = new System.Drawing.Size(124, 22);
+            this.itemGuardar.Text = "&Guardar ";
+            this.itemGuardar.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
             // 
             // itemRecientes
             // 
             this.itemRecientes.Name = "itemRecientes";
-            this.itemRecientes.Size = new System.Drawing.Size(180, 22);
+            this.itemRecientes.Size = new System.Drawing.Size(124, 22);
             this.itemRecientes.Text = "&Recientes";
             this.itemRecientes.DropDownClosed += new System.EventHandler(this.archivosRecientesClosed);
             this.itemRecientes.DropDownOpening += new System.EventHandler(this.archivosRecientesOpening);
             // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(121, 6);
+            // 
             // itemSalir
             // 
             this.itemSalir.Name = "itemSalir";
-            this.itemSalir.Size = new System.Drawing.Size(180, 22);
+            this.itemSalir.Size = new System.Drawing.Size(124, 22);
             this.itemSalir.Text = "&Salir";
             this.itemSalir.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
@@ -426,11 +431,6 @@ namespace EditorTexto
             this.toolStripButton7.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton7.Text = "Información";
             this.toolStripButton7.Click += new System.EventHandler(this.itemInfo_Click);
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
             // 
             // Form1
             // 
